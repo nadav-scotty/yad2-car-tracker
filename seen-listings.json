@@ -1,8 +1,8 @@
 {
-  "lastRun": "2026-09-15T21:00:00.052Z",
+  "lastRun": "2026-09-15T23:00:00.063Z",
   "listings": {},
   "scenarios": {
-    "i20": { "budget": 5, "year": 1, "km": 3 },
+    "i20": { "budget": 4, "year": 1, "km": 2 },
     "yaris": { "budget": 0, "year": 0, "km": 1 },
     "mazda2": { "budget": 0, "year": 0, "km": 1 },
     "swift": { "budget": 0, "year": 1, "km": 0 },
