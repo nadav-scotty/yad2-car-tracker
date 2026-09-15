@@ -129,6 +129,13 @@
     margin: 0;
   }
 
+  h3 {
+    font-family: "IBM Plex Sans Hebrew", "Segoe UI", Tahoma, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 0 0 10px;
+  }
+
   .count-tag {
     font-size: 13px;
     color: var(--muted);
@@ -216,6 +223,37 @@
     padding: 14px 4px;
   }
 
+  .expand-section {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+
+  .expand-note {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0 0 20px;
+    max-width: 62ch;
+  }
+
+  .expand-table th, .expand-table td {
+    text-align: center;
+  }
+
+  .expand-table th:first-child, .expand-table td:first-child {
+    text-align: right;
+  }
+
+  .expand-table td.num {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+  }
+
+  .expand-table td.num.zero {
+    color: var(--muted);
+    font-weight: 500;
+  }
+
   footer {
     margin-top: 56px;
     padding-top: 20px;
@@ -238,7 +276,7 @@
     <header>
       <div class="eyebrow">מעקב חיפוש רכב · יד2</div>
       <h1>חמישה דגמים, תקציב אחד</h1>
-      <p class="subhead">רק מודעות רלוונטיות — עם מחיר קנייה גלוי, בבעלות פרטית (לא ליסינג/חכר/חברה) — נשארות ברשימה. מודעה שנמכרה, הוסרה, או התבררה כלא פרטית יורדת מכאן אוטומטית.</p>
+      <p class="subhead">רק מודעות רלוונטיות — עם מחיר קנייה גלוי, בבעלות פרטית בלבד (לא ליסינג/חכר/חברה/השכרה), וללא אזכור מקור ליסינג בתיאור המודעה החופשי — נשארות ברשימה. מודעה שנמכרה, הוסרה, או התבררה כלא פרטית יורדת מכאן אוטומטית.</p>
       <div class="criteria">
         <span class="chip">שנתון 2017 ומעלה</span>
         <span class="chip">עד 150,000 ק"מ</span>
@@ -247,43 +285,159 @@
     </header>
 
     <div class="summary-strip">
-      <div class="summary-cell"><div class="count">0</div><div class="label">i20</div></div>
-      <div class="summary-cell"><div class="count">0</div><div class="label">יאריס</div></div>
-      <div class="summary-cell"><div class="count">0</div><div class="label">מאזדה 2</div></div>
-      <div class="summary-cell"><div class="count">0</div><div class="label">סוויפט</div></div>
+      <div class="summary-cell"><div class="count">6</div><div class="label">i20</div></div>
+      <div class="summary-cell"><div class="count">4</div><div class="label">יאריס</div></div>
+      <div class="summary-cell"><div class="count">2</div><div class="label">מאזדה 2</div></div>
+      <div class="summary-cell"><div class="count">2</div><div class="label">סוויפט</div></div>
       <div class="summary-cell"><div class="count">0</div><div class="label">פאביה</div></div>
     </div>
 
     <section class="model">
       <div class="model-head">
         <h2>יונדאי i20</h2>
-        <span class="count-tag">0 מודעות רלוונטיות</span>
+        <span class="count-tag">6 מודעות רלוונטיות</span>
       </div>
-      <div class="empty-note">כל המודעות שנבדקו נפסלו: בעלות ליסינג/חכר, או רכב שמקורו בעסקת ליס 0 ק"מ (מוזכר בתיאור המודעה גם כשהבעלות הרשומה "פרטית").</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr>
+          </thead>
+          <tbody>
+            <tr class="best">
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/o0vj7fj3" target="_blank" rel="noopener">Prime Plus אוט׳ 1.0 (100 כ״ס)</a><span class="best-badge">הכי זול</span></td>
+              <td class="year-tag">2022</td>
+              <td class="hand-tag">יד 1</td>
+              <td class="price">1,150 ₪ (100 חודשים)</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/nebq251b" target="_blank" rel="noopener">Prestige אוט׳ 1.0 (100 כ״ס)</a></td>
+              <td class="year-tag">2023</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price">1,427 ₪ (60 חודשים)</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/bgaz2dsl" target="_blank" rel="noopener">Prestige אוט׳ 1.0 (100 כ״ס)</a></td>
+              <td class="year-tag">2019</td>
+              <td class="hand-tag">יד 3</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/sth2fjrq" target="_blank" rel="noopener">Intense אוט׳ 1.0 (100 כ״ס)</a></td>
+              <td class="year-tag">2021</td>
+              <td class="hand-tag">יד 1</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/lsmf5zkb" target="_blank" rel="noopener">Supreme אוט׳ 1.0 (100 כ״ס)</a></td>
+              <td class="year-tag">2023</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/soineuid" target="_blank" rel="noopener">Supreme אוט׳ 1.0 (100 כ״ס)</a></td>
+              <td class="year-tag">2022</td>
+              <td class="hand-tag">יד 1</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="model">
       <div class="model-head">
         <h2>טויוטה יאריס</h2>
-        <span class="count-tag">0 מודעות רלוונטיות</span>
+        <span class="count-tag">4 מודעות רלוונטיות</span>
       </div>
-      <div class="empty-note">כל המודעות הקיימות הן ליסינג/סוכנות בלי מחיר קניה גלוי — אין כרגע יאריס יד שנייה פרטית במחיר תחת 40,000 ₪.</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr>
+          </thead>
+          <tbody>
+            <tr class="best">
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/pey2k4ws" target="_blank" rel="noopener">Flow היברידי אוט׳ 1.5 (92 כ״ס)</a><span class="best-badge">הכי זול</span></td>
+              <td class="year-tag">2026</td>
+              <td class="hand-tag">יד 0</td>
+              <td class="price">1,470 ₪ (60 חודשים)</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/ncqd0c2p" target="_blank" rel="noopener">Y20 היברידי אוט׳ 1.5 (99 כ״ס)</a></td>
+              <td class="year-tag">2020</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/zedsbvjy" target="_blank" rel="noopener">Style היברידי אוט׳ 5 דל 1.5 (92 כ״ס) [2024-2026]</a></td>
+              <td class="year-tag">2024</td>
+              <td class="hand-tag">יד 1</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/z7htrowy" target="_blank" rel="noopener">Style היברידי אוט׳ 1.5 (92 כ״ס) [2020-2026]</a></td>
+              <td class="year-tag">2021</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="model">
       <div class="model-head">
         <h2>מאזדה 2</h2>
-        <span class="count-tag">0 מודעות רלוונטיות</span>
+        <span class="count-tag">2 מודעות רלוונטיות</span>
       </div>
-      <div class="empty-note">כל המודעות הקיימות הן ליסינג/סוכנות בלי מחיר קניה גלוי.</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/cqipfzxy" target="_blank" rel="noopener">Dynamic אוט׳ 4 דל 1.5 (116 כ״ס)</a></td>
+              <td class="year-tag">2023</td>
+              <td class="hand-tag">יד 1</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/idjehi7d" target="_blank" rel="noopener">Dynamic אוט׳ 1.5 (116 כ״ס) [2018-2020]</a></td>
+              <td class="year-tag">2020</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="model">
       <div class="model-head">
         <h2>סוזוקי סוויפט</h2>
-        <span class="count-tag">0 מודעות רלוונטיות</span>
+        <span class="count-tag">2 מודעות רלוונטיות</span>
       </div>
-      <div class="empty-note">כל המודעות הקיימות הן ליסינג/סוכנות בלי מחיר קניה גלוי.</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/6629qdcx" target="_blank" rel="noopener">Glx Hybrid היברידי אוט׳ 1.2 (83 כ״ס)</a></td>
+              <td class="year-tag">2021</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/h1tblq3t" target="_blank" rel="noopener">GLX היברידי אוט׳ 1.2 (82 כ״ס)</a></td>
+              <td class="year-tag">2025</td>
+              <td class="hand-tag">יד 1</td>
+              <td class="price no-price">לא צוין מחיר</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="model">
@@ -291,11 +445,55 @@
         <h2>סקודה פאביה</h2>
         <span class="count-tag">0 מודעות רלוונטיות</span>
       </div>
-      <div class="empty-note">המודעה היחידה עם מחיר גלוי היא בבעלות מקורית של חברה — לא פרטי.</div>
+      <div class="empty-note">המודעה היחידה עם מחיר גלוי כרגע בבעלות "החכר (ליסינג)" — לא פרטי.</div>
+    </section>
+
+    <section class="expand-section">
+      <h3>מה עוד תמצא אם תרחיב את הקריטריונים</h3>
+      <p class="expand-note">לכל דגם, כמה מודעות רלוונטיות נוספות (מעבר לרשימה למעלה) היו מתגלות אילו הרפינו קריטריון אחד בכל פעם — תקציב, שנתון, או ק"מ — בנפרד. עוזר להחליט אם שווה להרחיב.</p>
+      <div class="table-wrap">
+        <table class="expand-table">
+          <thead>
+            <tr><th>דגם</th><th>+10,000 ₪ בתקציב</th><th>משנת 2016</th><th>עד 200,000 ק"מ</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>יונדאי i20</td>
+              <td class="num">2</td>
+              <td class="num zero">0</td>
+              <td class="num">2</td>
+            </tr>
+            <tr>
+              <td>טויוטה יאריס</td>
+              <td class="num zero">0</td>
+              <td class="num zero">0</td>
+              <td class="num">1</td>
+            </tr>
+            <tr>
+              <td>מאזדה 2</td>
+              <td class="num zero">0</td>
+              <td class="num zero">0</td>
+              <td class="num">1</td>
+            </tr>
+            <tr>
+              <td>סוזוקי סוויפט</td>
+              <td class="num zero">0</td>
+              <td class="num">1</td>
+              <td class="num zero">0</td>
+            </tr>
+            <tr>
+              <td>סקודה פאביה</td>
+              <td class="num">5</td>
+              <td class="num">3</td>
+              <td class="num">2</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <footer>
-      <span>נאסף מיד2 · 15.09.2026, 16:05</span>
+      <span>נאסף מיד2 · 15.09.2026, 16:44</span>
       <span>המשימה המתוזמנת ממשיכה לרוץ ותשלח עדכון במייל על מודעות חדשות</span>
     </footer>
   </div>

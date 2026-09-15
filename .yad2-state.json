@@ -1,66 +1,49 @@
 {
   "i20": [
-    "1zyll0md",
-    "228wslfz",
-    "4s5xc1qp",
-    "6djahk8q",
-    "9ac61nfx",
-    "9c3sanv9",
-    "a8cdgae5",
-    "bgaz2dsl",
-    "cgjexzvy",
-    "clso61ae",
-    "du71y672",
-    "e6wagp3j",
-    "jbbvbns7",
-    "jdrchdua",
-    "kliit5dq",
-    "lsmf5zkb",
-    "mvq508i6",
     "nebq251b",
-    "o0vj7fj3",
-    "qji6yhek",
-    "rrmp6j0q",
-    "skn3uakb",
-    "soineuid",
+    "bgaz2dsl",
     "sth2fjrq",
-    "sy751aq3",
-    "t4ou2y7m",
-    "u4utzjrv",
-    "yzn5r7u3"
+    "lsmf5zkb",
+    "o0vj7fj3",
+    "soineuid"
   ],
   "yaris": [
-    "bxl53hip",
-    "hxfs273b",
-    "i1w4hd1f",
-    "mlkzvwi2",
     "ncqd0c2p",
-    "oyktr8hs",
     "pey2k4ws",
-    "szmlgdeg",
-    "z7htrowy",
-    "zedsbvjy"
+    "zedsbvjy",
+    "z7htrowy"
   ],
   "mazda2": [
-    "5oh55cbg",
-    "6dww2h2j",
-    "87w92sn5",
-    "946obhwu",
     "cqipfzxy",
-    "go55ckv1",
-    "idjehi7d",
-    "nrkdpwzd"
+    "idjehi7d"
   ],
   "swift": [
     "6629qdcx",
-    "cke8c6ps",
-    "cu4pphrz",
     "h1tblq3t"
   ],
-  "fabia": [
-    "0lh41ghi",
-    "3e2xqe9p",
-    "agurria7",
-    "vguq2343"
-  ]
+  "fabia": [],
+  "details": {
+    "nebq251b": {"model":"i20","version":"Prestige אוט׳ 1.0 (100 כ״ס)","year":"2023","hand":"יד 2","price":"1,427 ₪ (60 חודשים)"},
+    "bgaz2dsl": {"model":"i20","version":"Prestige אוט׳ 1.0 (100 כ״ס)","year":"2019","hand":"יד 3","price":"לא צוין מחיר"},
+    "sth2fjrq": {"model":"i20","version":"Intense אוט׳ 1.0 (100 כ״ס)","year":"2021","hand":"יד 1","price":"לא צוין מחיר"},
+    "lsmf5zkb": {"model":"i20","version":"Supreme אוט׳ 1.0 (100 כ״ס)","year":"2023","hand":"יד 2","price":"לא צוין מחיר"},
+    "o0vj7fj3": {"model":"i20","version":"Prime Plus אוט׳ 1.0 (100 כ״ס)","year":"2022","hand":"יד 1","price":"1,150 ₪ (100 חודשים)"},
+    "soineuid": {"model":"i20","version":"Supreme אוט׳ 1.0 (100 כ״ס)","year":"2022","hand":"יד 1","price":"לא צוין מחיר"},
+    "ncqd0c2p": {"model":"yaris","version":"Y20 היברידי אוט׳ 1.5 (99 כ״ס)","year":"2020","hand":"יד 2","price":"לא צוין מחיר"},
+    "pey2k4ws": {"model":"yaris","version":"Flow היברידי אוט׳ 1.5 (92 כ״ס)","year":"2026","hand":"יד 0","price":"1,470 ₪ (60 חודשים)"},
+    "zedsbvjy": {"model":"yaris","version":"Style היברידי אוט׳ 5 דל 1.5 (92 כ״ס) [2024-2026]","year":"2024","hand":"יד 1","price":"לא צוין מחיר"},
+    "z7htrowy": {"model":"yaris","version":"Style היברידי אוט׳ 1.5 (92 כ״ס) [2020-2026]","year":"2021","hand":"יד 2","price":"לא צוין מחיר"},
+    "cqipfzxy": {"model":"mazda2","version":"Dynamic אוט׳ 4 דל 1.5 (116 כ״ס)","year":"2023","hand":"יד 1","price":"לא צוין מחיר"},
+    "idjehi7d": {"model":"mazda2","version":"Dynamic אוט׳ 1.5 (116 כ״ס) [2018-2020]","year":"2020","hand":"יד 2","price":"לא צוין מחיר"},
+    "6629qdcx": {"model":"swift","version":"Glx Hybrid היברידי אוט׳ 1.2 (83 כ״ס)","year":"2021","hand":"יד 2","price":"לא צוין מחיר"},
+    "h1tblq3t": {"model":"swift","version":"GLX היברידי אוט׳ 1.2 (82 כ״ס)","year":"2025","hand":"יד 1","price":"לא צוין מחיר"}
+  },
+  "scenarios": {
+    "i20": {"budget_50k": 2, "year_2016": 0, "km_200k": 2},
+    "yaris": {"budget_50k": 0, "year_2016": 0, "km_200k": 1},
+    "mazda2": {"budget_50k": 0, "year_2016": 0, "km_200k": 1},
+    "swift": {"budget_50k": 0, "year_2016": 1, "km_200k": 0},
+    "fabia": {"budget_50k": 5, "year_2016": 3, "km_200k": 2}
+  },
+  "lastRun": "2026-09-15T13:44:08.026Z"
 }
