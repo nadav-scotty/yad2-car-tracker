@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>חיפוש רכב — יד2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1c1a17;
+    --paper: #faf8f4;
+    --paper-raised: #ffffff;
+    --line: #e8e2d8;
+    --muted: #6b6459;
+    --accent: #8a6f4e;
+    --accent-soft: #f0e9dd;
+    --good: #2f6b4f;
+    --good-soft: #e6efe9;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans Hebrew", "Segoe UI", Tahoma, sans-serif;
+    line-height: 1.5;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 56px 28px 96px;
+  }
+
+  header {
+    margin-bottom: 40px;
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+
+  .subhead {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 62ch;
+  }
+
+  .criteria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .chip {
+    font-size: 13px;
+    padding: 6px 12px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+  }
+
+  .summary-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 32px 0 48px;
+  }
+
+  .summary-cell {
+    background: var(--paper-raised);
+    padding: 16px 14px;
+    text-align: center;
+  }
+
+  .summary-cell .count {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .summary-cell .label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  section.model {
+    margin-bottom: 44px;
+  }
+
+  .model-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+
+  .model-head h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .model-head .count-tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table-wrap { overflow-x: auto; }
+
+  th {
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tr.best td { background: var(--good-soft); }
+
+  a.listing-link {
+    color: var(--ink);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+  }
+
+  a.listing-link:hover { color: var(--accent); }
+
+  .price {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .price.no-price {
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  .best-badge {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--good);
+    background: var(--good-soft);
+    border: 1px solid var(--good);
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-right: 6px;
+  }
+
+  .hand-tag, .year-tag {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .empty-note {
+    color: var(--muted);
+    font-size: 13px;
+    padding: 14px 4px;
+  }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .summary-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">מעקב חיפוש רכב · יד2</div>
+      <h1>חמישה דגמים, תקציב אחד</h1>
+      <p class="subhead">כל המודעות הפעילות ביד2 שעומדות בקריטריונים — נאספו ישירות מהאתר. מודעות ליסינג/סוכנות בלי מחיר גלוי לא נספרות ברשימת "עסקאות".</p>
+      <div class="criteria">
+        <span class="chip">שנתון 2017 ומעלה</span>
+        <span class="chip">עד 150,000 ק"מ</span>
+        <span class="chip">עד 40,000 ₪</span>
+        <span class="chip">גיר אוטומט</span>
+      </div>
+    </header>
+
+    <div class="summary-strip">
+      <div class="summary-cell"><div class="count">33</div><div class="label">i20</div></div>
+      <div class="summary-cell"><div class="count">10</div><div class="label">יאריס</div></div>
+      <div class="summary-cell"><div class="count">9</div><div class="label">מאזדה 2</div></div>
+      <div class="summary-cell"><div class="count">5</div><div class="label">סוויפט</div></div>
+      <div class="summary-cell"><div class="count">4</div><div class="label">פאביה</div></div>
+    </div>
+
+    <section class="model">
+      <div class="model-head">
+        <h2>יונדאי i20</h2>
+        <span class="count-tag">6 מודעות עם מחיר גלוי · מתוך 33 סה"כ</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr>
+          </thead>
+          <tbody>
+            <tr class="best">
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/qji6yhek" target="_blank" rel="noopener">Inspire</a><span class="best-badge">הכי זול</span></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 5</td>
+              <td class="price">32,500 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/e6wagp3j" target="_blank" rel="noopener">Inspire</a></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 3</td>
+              <td class="price">37,000 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/jdrchdua" target="_blank" rel="noopener">Inspire</a></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price">38,375 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/rrmp6j0q" target="_blank" rel="noopener">Inspire</a></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price">39,000 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/sy751aq3" target="_blank" rel="noopener">Inspire</a></td>
+              <td class="year-tag">2019</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price">39,000 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/uda9eeqq" target="_blank" rel="noopener">Inspire</a></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price">40,000 ₪</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="empty-note">27 מודעות נוספות (Prime / Supreme / Prestige / Intense וכו') הן מסוכנויות רכב בליסינג בלי מחיר קניה גלוי.</div>
+    </section>
+
+    <section class="model">
+      <div class="model-head">
+        <h2>טויוטה יאריס</h2>
+        <span class="count-tag">0 מודעות עם מחיר יד-שנייה אמיתי · מתוך 10 סה"כ</span>
+      </div>
+      <div class="empty-note">כל 10 המודעות בטווח התקציב הן רכבים חדשים (2026) בליסינג חודשי, או שימוש ללא מחיר גלוי — אין כרגע יאריס יד שנייה עם מחיר קנייה תחת 40,000 ₪.</div>
+    </section>
+
+    <section class="model">
+      <div class="model-head">
+        <h2>מאזדה 2</h2>
+        <span class="count-tag">0 מודעות עם מחיר גלוי · מתוך 9 סה"כ</span>
+      </div>
+      <div class="empty-note">כל 9 המודעות הן מסוכנויות רכב בליסינג בלי מחיר קניה גלוי — כדאי ליצור קשר ישיר לבירור מחיר.</div>
+    </section>
+
+    <section class="model">
+      <div class="model-head">
+        <h2>סוזוקי סוויפט</h2>
+        <span class="count-tag">1 מודעה עם מחיר גלוי · מתוך 5 סה"כ</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/cu4pphrz" target="_blank" rel="noopener">GLX</a></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 4</td>
+              <td class="price">39,509 ₪</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="model">
+      <div class="model-head">
+        <h2>סקודה פאביה</h2>
+        <span class="count-tag">3 מודעות עם מחיר גלוי · מתוך 4 סה"כ</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr>
+          </thead>
+          <tbody>
+            <tr class="best">
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/agurria7" target="_blank" rel="noopener">Ambition</a><span class="best-badge">הכי זול</span></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 3</td>
+              <td class="price">35,000 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/3e2xqe9p" target="_blank" rel="noopener">Style</a></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 3</td>
+              <td class="price">38,500 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/0lh41ghi" target="_blank" rel="noopener">Ambition (סטיישן)</a></td>
+              <td class="year-tag">2018</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price">39,500 ₪</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <span>נאסף מיד2 · 14.09.2026, 15:50</span>
+      <span>המשימה המתוזמנת ממשיכה לרוץ כל שעתיים ותשלח עדכון בוואטסאפ על מודעות חדשות</span>
+    </footer>
+  </div>
+</body>
+</html>
