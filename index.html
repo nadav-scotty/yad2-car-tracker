@@ -51,33 +51,16 @@
   }
 
   h1 {
-    font-family: "IBM Plex Sans Hebrew", "Segoe UI", Tahoma, sans-serif;
+    font-size: 32px;
     font-weight: 700;
-    font-size: clamp(28px, 4vw, 40px);
     margin: 0 0 12px;
-    text-wrap: balance;
   }
 
   .subhead {
     color: var(--muted);
     font-size: 15px;
-    max-width: 62ch;
-  }
-
-  .criteria {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .chip {
-    font-size: 13px;
-    padding: 6px 12px;
-    background: var(--paper-raised);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--ink);
+    max-width: 640px;
+    margin: 0;
   }
 
   .summary-strip {
@@ -86,305 +69,302 @@
     gap: 1px;
     background: var(--line);
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    margin: 32px 0 48px;
+    margin: 36px 0 48px;
   }
 
   .summary-cell {
     background: var(--paper-raised);
-    padding: 16px 14px;
+    padding: 20px 16px;
     text-align: center;
   }
 
-  .summary-cell .count {
+  .summary-cell .num {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 22px;
+    font-size: 30px;
     font-weight: 600;
+    color: var(--accent);
   }
 
   .summary-cell .label {
+    font-size: 13px;
     color: var(--muted);
-    font-size: 12px;
-    margin-top: 2px;
+    margin-top: 4px;
   }
 
-  .model {
-    margin-bottom: 40px;
+  section.model {
+    margin-bottom: 44px;
   }
 
   .model-head {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
     margin-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
   }
 
-  h2 {
-    font-family: "IBM Plex Sans Hebrew", "Segoe UI", Tahoma, sans-serif;
-    font-weight: 700;
-    font-size: 20px;
+  .model-head h2 {
+    font-size: 19px;
+    font-weight: 600;
     margin: 0;
   }
 
-  h3 {
-    font-family: "IBM Plex Sans Hebrew", "Segoe UI", Tahoma, sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    margin: 0 0 10px;
-  }
-
-  .count-tag {
-    font-size: 13px;
+  .model-head .count-pill {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
     color: var(--muted);
-  }
-
-  .table-wrap {
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    overflow: hidden;
-    background: var(--paper-raised);
+    background: var(--accent-soft);
+    padding: 3px 10px;
+    border-radius: 999px;
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
+    font-size: 14px;
   }
 
-  th {
+  thead th {
     text-align: right;
-    font-size: 12px;
     font-weight: 600;
     color: var(--muted);
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     padding: 8px 10px;
     border-bottom: 1px solid var(--line);
   }
 
-  td {
-    padding: 12px 10px;
+  tbody td {
+    padding: 10px 10px;
     border-bottom: 1px solid var(--line);
-    font-size: 14px;
-    vertical-align: middle;
   }
 
-  tr:last-child td { border-bottom: none; }
-
-  tr.best td { background: var(--good-soft); }
-
-  a.listing-link {
-    color: var(--ink);
-    font-weight: 500;
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent);
+  tbody tr:last-child td {
+    border-bottom: none;
   }
 
-  a.listing-link:hover { color: var(--accent); }
-
-  .price {
-    font-family: "IBM Plex Mono", monospace;
-    font-weight: 600;
-    text-align: left;
-    white-space: nowrap;
+  tbody tr.cheapest {
+    background: var(--good-soft);
   }
 
-  .price.no-price {
-    color: var(--muted);
-    font-weight: 500;
-    font-size: 13px;
-  }
-
-  .best-badge {
+  .badge-cheapest {
     display: inline-block;
     font-family: "IBM Plex Mono", monospace;
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     color: var(--good);
-    background: var(--good-soft);
+    background: #fff;
     border: 1px solid var(--good);
-    border-radius: 4px;
     padding: 1px 6px;
+    border-radius: 999px;
     margin-right: 6px;
   }
 
-  .hand-tag, .year-tag {
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-  .empty-note {
-    color: var(--muted);
-    font-size: 13px;
-    padding: 14px 4px;
-  }
-
-  .expand-section {
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid var(--line);
-  }
-
-  .expand-note {
-    color: var(--muted);
-    font-size: 13px;
-    margin: 0 0 20px;
-    max-width: 62ch;
-  }
-
-  .expand-table th, .expand-table td {
-    text-align: center;
-  }
-
-  .expand-table th:first-child, .expand-table td:first-child {
-    text-align: right;
-  }
-
-  .expand-table td.num {
+  .price {
     font-family: "IBM Plex Mono", monospace;
     font-weight: 600;
   }
 
-  .expand-table td.num.zero {
+  a.listing-link {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent);
+  }
+
+  a.listing-link:hover {
+    color: var(--accent);
+  }
+
+  .empty-model {
     color: var(--muted);
-    font-weight: 500;
+    font-size: 14px;
+    padding: 14px 4px;
+  }
+
+  .expand-section {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 2px solid var(--line);
+  }
+
+  .expand-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  .expand-section .subhead {
+    margin-bottom: 24px;
+  }
+
+  .expand-table th,
+  .expand-table td {
+    text-align: center;
+  }
+
+  .expand-table th:first-child,
+  .expand-table td:first-child {
+    text-align: right;
+  }
+
+  .expand-table .zero {
+    color: var(--muted);
+  }
+
+  .expand-table .nonzero {
+    font-weight: 600;
+    color: var(--accent);
   }
 
   footer {
-    margin-top: 56px;
-    padding-top: 20px;
+    margin-top: 64px;
+    padding-top: 24px;
     border-top: 1px solid var(--line);
     color: var(--muted);
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
+    font-size: 13px;
   }
 
-  @media (max-width: 640px) {
-    .summary-strip { grid-template-columns: repeat(2, 1fr); }
+  footer .updated {
+    font-family: "IBM Plex Mono", monospace;
+    margin-bottom: 6px;
   }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="eyebrow">מעקב חיפוש רכב · יד2</div>
-      <h1>חמישה דגמים, תקציב אחד</h1>
-      <p class="subhead">רק מודעות רלוונטיות — עם מחיר קנייה גלוי, בבעלות פרטית בלבד (לא ליסינג/חכר/חברה/השכרה), וללא אזכור מקור ליסינג בתיאור המודעה החופשי — נשארות ברשימה. מודעה שנמכרה, הוסרה, או התבררה כלא פרטית יורדת מכאן אוטומטית.</p>
-      <div class="criteria">
-        <span class="chip">שנתון 2017 ומעלה</span>
-        <span class="chip">עד 150,000 ק"מ</span>
-        <span class="chip">עד 40,000 ₪</span>
-      </div>
-    </header>
+<div class="wrap">
 
-    <div class="summary-strip">
-      <div class="summary-cell"><div class="count">0</div><div class="label">i20</div></div>
-      <div class="summary-cell"><div class="count">0</div><div class="label">יאריס</div></div>
-      <div class="summary-cell"><div class="count">0</div><div class="label">מאזדה 2</div></div>
-      <div class="summary-cell"><div class="count">0</div><div class="label">סוויפט</div></div>
-      <div class="summary-cell"><div class="count">0</div><div class="label">פאביה</div></div>
+  <header>
+    <div class="eyebrow">מעקב רכב יד2</div>
+    <h1>חמישה דגמים, אותם קריטריונים</h1>
+    <p class="subhead">
+      הרשימה כוללת רק מודעות בבעלות פרטית, עם מחיר קנייה אמיתי (לא תשלום חודשי בליסינג או מימון),
+      וללא כל אזכור ליסינג בתיאור המודעה.
+    </p>
+  </header>
+
+  <div class="summary-strip">
+    <div class="summary-cell">
+      <div class="num">0</div>
+      <div class="label">יונדאי i20</div>
     </div>
-
-    <section class="model">
-      <div class="model-head">
-        <h2>יונדאי i20</h2>
-        <span class="count-tag">0 מודעות רלוונטיות</span>
-      </div>
-      <div class="empty-note">כל המודעות עם "מחיר" הן למעשה תשלום חודשי בליסינג/מימון, ללא מחיר קנייה אמיתי — לא נספרות.</div>
-    </section>
-
-    <section class="model">
-      <div class="model-head">
-        <h2>טויוטה יאריס</h2>
-        <span class="count-tag">0 מודעות רלוונטיות</span>
-      </div>
-      <div class="empty-note">כל המודעות עם "מחיר" הן למעשה תשלום חודשי בליסינג/מימון, ללא מחיר קנייה אמיתי — לא נספרות.</div>
-    </section>
-
-    <section class="model">
-      <div class="model-head">
-        <h2>מאזדה 2</h2>
-        <span class="count-tag">0 מודעות רלוונטיות</span>
-      </div>
-      <div class="empty-note">כל המודעות הקיימות הן ליסינג/סוכנות בלי מחיר קניה גלוי.</div>
-    </section>
-
-    <section class="model">
-      <div class="model-head">
-        <h2>סוזוקי סוויפט</h2>
-        <span class="count-tag">0 מודעות רלוונטיות</span>
-      </div>
-      <div class="empty-note">כל המודעות הקיימות הן ליסינג/סוכנות בלי מחיר קניה גלוי.</div>
-    </section>
-
-    <section class="model">
-      <div class="model-head">
-        <h2>סקודה פאביה</h2>
-        <span class="count-tag">0 מודעות רלוונטיות</span>
-      </div>
-      <div class="empty-note">המודעה היחידה עם מחיר גלוי כרגע בבעלות "החכר (ליסינג)" — לא פרטי.</div>
-    </section>
-
-    <section class="expand-section">
-      <h3>מה עוד תמצא אם תרחיב את הקריטריונים</h3>
-      <p class="expand-note">כל מספר הוא כמות המודעות הרלוונטיות הנוספות (מחיר קנייה אמיתי + בעלות פרטית + ללא אזכור ליסינג בתיאור) שהיו מתגלות מעבר לרשימה הרגילה, בכל תרחיש הרחבה בנפרד.</p>
-      <div class="table-wrap">
-        <table class="expand-table">
-          <thead>
-            <tr>
-              <th>דגם</th>
-              <th>+10,000 ₪ בתקציב</th>
-              <th>משנת 2016</th>
-              <th>עד 200,000 ק"מ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>יונדאי i20</td>
-              <td class="num">3</td>
-              <td class="num">1</td>
-              <td class="num">2</td>
-            </tr>
-            <tr>
-              <td>טויוטה יאריס</td>
-              <td class="num zero">0</td>
-              <td class="num zero">0</td>
-              <td class="num">1</td>
-            </tr>
-            <tr>
-              <td>מאזדה 2</td>
-              <td class="num zero">0</td>
-              <td class="num zero">0</td>
-              <td class="num">1</td>
-            </tr>
-            <tr>
-              <td>סוזוקי סוויפט</td>
-              <td class="num zero">0</td>
-              <td class="num">1</td>
-              <td class="num zero">0</td>
-            </tr>
-            <tr>
-              <td>סקודה פאביה</td>
-              <td class="num">5</td>
-              <td class="num">3</td>
-              <td class="num">1</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <footer>
-      <span>נאסף מיד2 · 15.09.2026, 18:00</span>
-      <span>המשימה המתוזמנת ממשיכה לרוץ ותשלח עדכון במייל על מודעות חדשות</span>
-    </footer>
+    <div class="summary-cell">
+      <div class="num">0</div>
+      <div class="label">טויוטה יאריס</div>
+    </div>
+    <div class="summary-cell">
+      <div class="num">0</div>
+      <div class="label">מאזדה 2</div>
+    </div>
+    <div class="summary-cell">
+      <div class="num">0</div>
+      <div class="label">סוזוקי סוויפט</div>
+    </div>
+    <div class="summary-cell">
+      <div class="num">0</div>
+      <div class="label">סקודה פאביה</div>
+    </div>
   </div>
+
+  <section class="model">
+    <div class="model-head">
+      <h2>יונדאי i20</h2>
+      <span class="count-pill">0 מודעות</span>
+    </div>
+    <div class="empty-model">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</div>
+  </section>
+
+  <section class="model">
+    <div class="model-head">
+      <h2>טויוטה יאריס</h2>
+      <span class="count-pill">0 מודעות</span>
+    </div>
+    <div class="empty-model">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</div>
+  </section>
+
+  <section class="model">
+    <div class="model-head">
+      <h2>מאזדה 2</h2>
+      <span class="count-pill">0 מודעות</span>
+    </div>
+    <div class="empty-model">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</div>
+  </section>
+
+  <section class="model">
+    <div class="model-head">
+      <h2>סוזוקי סוויפט</h2>
+      <span class="count-pill">0 מודעות</span>
+    </div>
+    <div class="empty-model">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</div>
+  </section>
+
+  <section class="model">
+    <div class="model-head">
+      <h2>סקודה פאביה</h2>
+      <span class="count-pill">0 מודעות</span>
+    </div>
+    <div class="empty-model">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</div>
+  </section>
+
+  <section class="expand-section">
+    <h2>מה עוד תמצא אם תרחיב את הקריטריונים</h2>
+    <p class="subhead">
+      לכל דגם, כמות המודעות הרלוונטיות הנוספות (מעבר לרשימה למעלה) בכל אחד משלושת התרחישים —
+      תקציב, שנתון וק"מ מורחבים, כל אחד בנפרד.
+    </p>
+    <table class="expand-table">
+      <thead>
+        <tr>
+          <th>דגם</th>
+          <th>+10,000 ₪ בתקציב</th>
+          <th>משנת 2016</th>
+          <th>עד 200,000 ק"מ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>יונדאי i20</td>
+          <td class="nonzero">5</td>
+          <td class="nonzero">1</td>
+          <td class="nonzero">3</td>
+        </tr>
+        <tr>
+          <td>טויוטה יאריס</td>
+          <td class="zero">0</td>
+          <td class="zero">0</td>
+          <td class="nonzero">1</td>
+        </tr>
+        <tr>
+          <td>מאזדה 2</td>
+          <td class="zero">0</td>
+          <td class="zero">0</td>
+          <td class="nonzero">1</td>
+        </tr>
+        <tr>
+          <td>סוזוקי סוויפט</td>
+          <td class="zero">0</td>
+          <td class="nonzero">1</td>
+          <td class="zero">0</td>
+        </tr>
+        <tr>
+          <td>סקודה פאביה</td>
+          <td class="nonzero">5</td>
+          <td class="nonzero">3</td>
+          <td class="nonzero">1</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <div class="updated">עודכן לאחרונה: 16.09.2026, 00:00</div>
+    <div>המשימה המתוזמנת ממשיכה לרוץ ותשלח עדכון במייל על מודעות חדשות.</div>
+  </footer>
+
+</div>
 </body>
 </html>
