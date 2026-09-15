@@ -104,44 +104,47 @@
   }
 
   .summary-cell .label {
-    font-size: 12px;
     color: var(--muted);
-    margin-top: 4px;
+    font-size: 12px;
+    margin-top: 2px;
   }
 
-  section.model {
-    margin-bottom: 44px;
+  .model {
+    margin-bottom: 40px;
   }
 
   .model-head {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    gap: 12px;
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
     margin-bottom: 14px;
   }
 
-  .model-head h2 {
+  h2 {
     font-family: "Fraunces", Georgia, serif;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 20px;
     margin: 0;
   }
 
-  .model-head .count-tag {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 12px;
+  .count-tag {
+    font-size: 13px;
     color: var(--muted);
+  }
+
+  .table-wrap {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--paper-raised);
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
   }
-
-  .table-wrap { overflow-x: auto; }
 
   th {
     text-align: right;
@@ -244,17 +247,17 @@
     </header>
 
     <div class="summary-strip">
-      <div class="summary-cell"><div class="count">15</div><div class="label">i20</div></div>
+      <div class="summary-cell"><div class="count">28</div><div class="label">i20</div></div>
       <div class="summary-cell"><div class="count">10</div><div class="label">יאריס</div></div>
       <div class="summary-cell"><div class="count">8</div><div class="label">מאזדה 2</div></div>
-      <div class="summary-cell"><div class="count">3</div><div class="label">סוויפט</div></div>
-      <div class="summary-cell"><div class="count">2</div><div class="label">פאביה</div></div>
+      <div class="summary-cell"><div class="count">4</div><div class="label">סוויפט</div></div>
+      <div class="summary-cell"><div class="count">4</div><div class="label">פאביה</div></div>
     </div>
 
     <section class="model">
       <div class="model-head">
         <h2>יונדאי i20</h2>
-        <span class="count-tag">3 מודעות עם מחיר גלוי · מתוך 15 סה"כ</span>
+        <span class="count-tag">5 מודעות עם מחיר גלוי · מתוך 28 סה"כ</span>
       </div>
       <div class="table-wrap">
         <table>
@@ -263,10 +266,22 @@
           </thead>
           <tbody>
             <tr class="best">
-              <td><a class="listing-link" href="https://www.yad2.co.il/item/e6wagp3j" target="_blank" rel="noopener">Inspire</a><span class="best-badge">הכי זול</span></td>
+              <td><a class="listing-link" href="https://www.yad2.co.il/vehicles/item/qji6yhek" target="_blank" rel="noopener">Inspire</a><span class="best-badge">הכי זול</span></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 5</td>
+              <td class="price">32,500 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/e6wagp3j" target="_blank" rel="noopener">Inspire</a></td>
               <td class="year-tag">2017</td>
               <td class="hand-tag">יד 3</td>
               <td class="price">37,000 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/vehicles/item/jdrchdua" target="_blank" rel="noopener">Inspire</a></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 2</td>
+              <td class="price">38,375 ₪</td>
             </tr>
             <tr>
               <td><a class="listing-link" href="https://www.yad2.co.il/item/sy751aq3" target="_blank" rel="noopener">Prime</a></td>
@@ -283,15 +298,30 @@
           </tbody>
         </table>
       </div>
-      <div class="empty-note">12 מודעות נוספות הן מסוכנויות רכב בליסינג בלי מחיר קניה גלוי.</div>
+      <div class="empty-note">23 מודעות נוספות הן מסוכנויות רכב בליסינג בלי מחיר קניה גלוי.</div>
     </section>
 
     <section class="model">
       <div class="model-head">
         <h2>טויוטה יאריס</h2>
-        <span class="count-tag">0 מודעות עם מחיר גלוי · מתוך 10 סה"כ</span>
+        <span class="count-tag">1 מודעות עם מחיר גלוי · מתוך 10 סה"כ</span>
       </div>
-      <div class="empty-note">כל 10 המודעות הן מסוכנויות רכב בליסינג בלי מחיר קניה גלוי — אין כרגע מודעה עם מחיר יד-שנייה אמיתי.</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr>
+          </thead>
+          <tbody>
+            <tr class="best">
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/bxl53hip" target="_blank" rel="noopener">Comfort היברידי</a><span class="best-badge">הכי זול</span></td>
+              <td class="year-tag">2026</td>
+              <td class="hand-tag">יד 0</td>
+              <td class="price">1,500 ₪</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="empty-note">9 מודעות נוספות הן מסוכנויות רכב בליסינג בלי מחיר קניה גלוי.</div>
     </section>
 
     <section class="model">
@@ -305,15 +335,7 @@
     <section class="model">
       <div class="model-head">
         <h2>סוזוקי סוויפט</h2>
-        <span class="count-tag">0 מודעות עם מחיר גלוי · מתוך 3 סה"כ</span>
-      </div>
-      <div class="empty-note">כל 3 המודעות הן מסוכנויות רכב בליסינג בלי מחיר קניה גלוי — אין כרגע מודעה עם מחיר יד-שנייה אמיתי.</div>
-    </section>
-
-    <section class="model">
-      <div class="model-head">
-        <h2>סקודה פאביה</h2>
-        <span class="count-tag">1 מודעות עם מחיר גלוי · מתוך 2 סה"כ</span>
+        <span class="count-tag">1 מודעות עם מחיר גלוי · מתוך 4 סה"כ</span>
       </div>
       <div class="table-wrap">
         <table>
@@ -322,10 +344,45 @@
           </thead>
           <tbody>
             <tr class="best">
-              <td><a class="listing-link" href="https://www.yad2.co.il/item/0lh41ghi" target="_blank" rel="noopener">Ambition</a><span class="best-badge">הכי זול</span></td>
+              <td><a class="listing-link" href="https://www.yad2.co.il/vehicles/item/cu4pphrz" target="_blank" rel="noopener">GLX</a><span class="best-badge">הכי זול</span></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 4</td>
+              <td class="price">39,509 ₪</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="empty-note">3 מודעות נוספות הן מסוכנויות רכב בליסינג בלי מחיר קניה גלוי.</div>
+    </section>
+
+    <section class="model">
+      <div class="model-head">
+        <h2>סקודה פאביה</h2>
+        <span class="count-tag">3 מודעות עם מחיר גלוי · מתוך 4 סה"כ</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr>
+          </thead>
+          <tbody>
+            <tr class="best">
+              <td><a class="listing-link" href="https://www.yad2.co.il/vehicles/item/agurria7" target="_blank" rel="noopener">Ambition</a><span class="best-badge">הכי זול</span></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 3</td>
+              <td class="price">35,000 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/item/0lh41ghi" target="_blank" rel="noopener">Ambition</a></td>
               <td class="year-tag">2018</td>
               <td class="hand-tag">יד 2</td>
               <td class="price">36,000 ₪</td>
+            </tr>
+            <tr>
+              <td><a class="listing-link" href="https://www.yad2.co.il/vehicles/item/3e2xqe9p" target="_blank" rel="noopener">Style</a></td>
+              <td class="year-tag">2017</td>
+              <td class="hand-tag">יד 3</td>
+              <td class="price">38,500 ₪</td>
             </tr>
           </tbody>
         </table>
@@ -334,7 +391,7 @@
     </section>
 
     <footer>
-      <span>נאסף מיד2 · 15.09.2026, 14:00</span>
+      <span>נאסף מיד2 · 15.09.2026, 16:00</span>
       <span>המשימה המתוזמנת ממשיכה לרוץ ותשלח עדכון בוואטסאפ על מודעות חדשות</span>
     </footer>
   </div>
