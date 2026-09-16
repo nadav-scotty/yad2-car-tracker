@@ -1,12 +1,12 @@
 {
-  "lastRun": "2026-09-16T17:02:47.000Z",
+  "lastRun": "2026-09-16T19:00:00.000Z",
   "listings": {},
   "expansions": {
     "i20": {
       "budget": [
         { "version": "Premium אוט׳ 1.4 (100 כ״ס)", "year": 2018, "hand": 2, "price": 47000, "link": "https://www.yad2.co.il/item/ab5zkci4" },
-        { "version": "Intense אוט׳ 1.0 (100 כ״ס)", "year": 2020, "hand": 2, "price": 45000, "link": "https://www.yad2.co.il/item/b84vp4t6" },
-        { "version": "Prestige אוט׳ 1.0 (100 כ״ס)", "year": 2019, "hand": 3, "price": 49000, "link": "https://www.yad2.co.il/item/2z4f0sal" }
+        { "version": "Prestige אוט׳ 1.0 (100 כ״ס)", "year": 2019, "hand": 3, "price": 49000, "link": "https://www.yad2.co.il/item/2z4f0sal" },
+        { "version": "Intense אוט׳ 1.0 (100 כ״ס)", "year": 2020, "hand": 2, "price": 45000, "link": "https://www.yad2.co.il/item/b84vp4t6" }
       ],
       "year": [
         { "version": "Inspire אוט׳ 1.4 (100 כ״ס)", "year": 2016, "hand": 2, "price": 35000, "link": "https://www.yad2.co.il/item/m8ok0bta" }
@@ -18,10 +18,10 @@
     },
     "yaris": {
       "budget": [],
-      "year": [
+      "year": [],
+      "km": [
         { "version": "Sol אוט׳ 1.3 (99 כ״ס) [2014-2017]", "year": 2017, "hand": 3, "price": 37900, "link": "https://www.yad2.co.il/item/ygog2h8f" }
-      ],
-      "km": []
+      ]
     },
     "mazda2": {
       "budget": [],
@@ -39,11 +39,11 @@
     },
     "fabia": {
       "budget": [
-        { "version": "Ambition אוט׳ האצ'בק 1.0 (110 כ״ס) [2017-2019]", "year": 2018, "hand": 3, "price": 44900, "link": "https://www.yad2.co.il/item/p6sa7t0z" },
-        { "version": "Style אוט׳ 1.2 (110 כ״ס)", "year": 2017, "hand": 1, "price": 46900, "link": "https://www.yad2.co.il/item/lgu9pc5v" },
+        { "version": "Style אוט׳ 1.2 (110 כ״ס)", "year": 2017, "hand": 1, "price": 43900, "link": "https://www.yad2.co.il/item/m5ph7edc" },
         { "version": "Ambition אוט׳ 1.0 (110 כ״ס) [2018-2026]", "year": 2019, "hand": 2, "price": 48900, "link": "https://www.yad2.co.il/item/8nlyskln" },
+        { "version": "Ambition אוט׳ האצ'בק 1.0 (110 כ״ס) [2017-2019]", "year": 2018, "hand": 3, "price": 44900, "link": "https://www.yad2.co.il/item/p6sa7t0z" },
         { "version": "Style אוט׳ 1.0 (110 כ״ס) [2017-2019]", "year": 2017, "hand": 1, "price": 47900, "link": "https://www.yad2.co.il/item/1pd6je0u" },
-        { "version": "Style אוט׳ 1.2 (110 כ״ס)", "year": 2017, "hand": 1, "price": 43900, "link": "https://www.yad2.co.il/item/m5ph7edc" }
+        { "version": "Style אוט׳ 1.2 (110 כ״ס)", "year": 2017, "hand": 1, "price": 46900, "link": "https://www.yad2.co.il/item/lgu9pc5v" }
       ],
       "year": [
         { "version": "Ambition אוט׳ האצ'בק 1.2 (110 כ״ס)", "year": 2016, "hand": 3, "price": 32000, "link": "https://www.yad2.co.il/item/euqbamta" },
