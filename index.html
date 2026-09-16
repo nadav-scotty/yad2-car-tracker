@@ -3,254 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>מעקב רכבים — יד2</title>
+<title>מעקב רכבים יד2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #0b0c0f;
+    --card: #15171c;
+    --card-border: #23262e;
+    --text: #eceef1;
+    --text-dim: #9aa0ac;
+    --accent: #4f8cff;
+    --good: #34d399;
+    --danger: #f87171;
+  }
   * { box-sizing: border-box; }
   body {
     font-family: 'IBM Plex Sans Hebrew', sans-serif;
-    background: #f7f7f8;
-    color: #1a1a1a;
+    background: var(--bg);
+    color: var(--text);
     margin: 0;
-    padding: 0;
-    direction: rtl;
+    padding: 0 20px 60px;
+    line-height: 1.5;
   }
-  .container { max-width: 1000px; margin: 0 auto; padding: 40px 24px; }
-  header { margin-bottom: 32px; }
-  h1 { font-size: 28px; font-weight: 700; margin: 0 0 6px; }
-  .subhead { color: #6b6b6b; font-size: 15px; margin: 0; }
-  .summary-strip {
+  .wrap { max-width: 980px; margin: 0 auto; }
+  header { padding: 48px 0 24px; text-align: center; }
+  h1 { font-size: 30px; font-weight: 700; margin: 0 0 8px; }
+  .subhead { color: var(--text-dim); font-size: 15px; margin: 0; }
+  .summary {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 12px;
-    margin-bottom: 40px;
+    margin: 32px 0;
   }
-  .summary-card {
-    background: white;
-    border-radius: 12px;
-    padding: 18px 14px;
+  .summary .stat {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 18px 10px;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
-  .summary-card .count { font-size: 30px; font-weight: 700; color: #1a1a1a; }
-  .summary-card .label { font-size: 13px; color: #6b6b6b; margin-top: 4px; }
-  .model-section { margin-bottom: 40px; }
-  .model-section h2 {
-    font-size: 19px;
-    font-weight: 600;
-    margin: 0 0 12px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #eaeaea;
-  }
+  .summary .stat .num { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .summary .stat .label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+  section.model { margin: 40px 0; }
+  h2 { font-size: 20px; font-weight: 600; margin: 0 0 14px; padding-right: 10px; border-right: 3px solid var(--accent); }
   table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
-    border-radius: 10px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 14px;
   }
   th, td {
     padding: 10px 14px;
     text-align: right;
-    font-size: 14px;
+    border-bottom: 1px solid var(--card-border);
   }
-  th {
-    background: #f0f0f2;
-    font-weight: 600;
-    color: #4a4a4a;
+  th { color: var(--text-dim); font-weight: 500; font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .cheapest { color: var(--good); font-weight: 600; }
+  .cheapest-badge {
+    display: inline-block;
+    background: rgba(52,211,153,.15);
+    color: var(--good);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-right: 6px;
   }
-  tr:not(:last-child) td { border-bottom: 1px solid #eee; }
-  a.item-link { color: #2563eb; text-decoration: none; font-weight: 500; }
-  a.item-link:hover { text-decoration: underline; }
-  .empty-note { color: #8a8a8a; font-size: 14px; padding: 12px 4px; }
-  .expansion-section { margin-top: 56px; }
-  .expansion-section > h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
-  .expansion-section > .subhead { margin-bottom: 24px; }
-  .expansion-model h3 {
-    font-size: 17px;
-    font-weight: 600;
-    margin: 28px 0 10px;
-    color: #1a1a1a;
-  }
-  .expansion-scenario { margin-bottom: 18px; }
-  .expansion-scenario h4 {
-    font-size: 14px;
-    font-weight: 500;
-    color: #4a4a4a;
-    margin: 0 0 8px;
-  }
-  .expansion-scenario table { font-size: 13px; }
-  .expansion-scenario th, .expansion-scenario td { padding: 8px 12px; }
+  .empty-note { color: var(--text-dim); font-size: 14px; padding: 12px 4px; }
+  .expansion-block { margin-top: 48px; }
+  .expansion-block > h2 { border-right-color: #6b7280; }
+  .model-expansion { margin: 24px 0 0; }
+  .model-expansion h3 { font-size: 16px; font-weight: 600; margin: 0 0 10px; color: var(--text); }
+  .expansion-sub { margin: 10px 0 18px; }
+  .expansion-sub .sub-title { font-size: 13px; color: var(--text-dim); margin: 0 0 6px; }
+  .expansion-sub table { font-size: 13px; }
+  .expansion-sub th, .expansion-sub td { padding: 7px 10px; }
+  .no-expansion-note { color: var(--text-dim); font-size: 14px; padding: 6px 4px 0; }
   footer {
-    margin-top: 56px;
-    padding-top: 20px;
-    border-top: 1px solid #eaeaea;
-    color: #8a8a8a;
-    font-size: 13px;
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--card-border);
     text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
   }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
   <header>
-    <h1>מעקב רכבים ביד2</h1>
-    <p class="subhead">חמישה חיפושים פעילים — יונדאי i20, טויוטה יאריס, מאזדה 2, סוזוקי סוויפט, סקודה פאביה. שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪.</p>
+    <h1>מעקב רכבים יד2</h1>
+    <p class="subhead">5 חיפושים פעילים · עדכון אוטומטי · יונדאי i20, טויוטה יאריס, מאזדה 2, סוזוקי סוויפט, סקודה פאביה</p>
   </header>
 
-  <div class="summary-strip">
-    <div class="summary-card"><div class="count">0</div><div class="label">יונדאי i20</div></div>
-    <div class="summary-card"><div class="count">0</div><div class="label">טויוטה יאריס</div></div>
-    <div class="summary-card"><div class="count">0</div><div class="label">מאזדה 2</div></div>
-    <div class="summary-card"><div class="count">0</div><div class="label">סוזוקי סוויפט</div></div>
-    <div class="summary-card"><div class="count">0</div><div class="label">סקודה פאביה</div></div>
+  <div class="summary">
+    <div class="stat"><div class="num">0</div><div class="label">יונדאי i20</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">טויוטה יאריס</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">מאזדה 2</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">סוזוקי סוויפט</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">סקודה פאביה</div></div>
   </div>
 
-  <section class="model-section">
+  <section class="model">
     <h2>יונדאי i20</h2>
-    <div class="empty-note">אין כרגע מודעות שעומדות בכל הקריטריונים (מחיר קנייה אמיתי, בעלות פרטית, ללא מקור ליסינג).</div>
+    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
   </section>
 
-  <section class="model-section">
+  <section class="model">
     <h2>טויוטה יאריס</h2>
-    <div class="empty-note">אין כרגע מודעות שעומדות בכל הקריטריונים.</div>
+    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
   </section>
 
-  <section class="model-section">
+  <section class="model">
     <h2>מאזדה 2</h2>
-    <div class="empty-note">אין כרגע מודעות שעומדות בכל הקריטריונים.</div>
+    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
   </section>
 
-  <section class="model-section">
+  <section class="model">
     <h2>סוזוקי סוויפט</h2>
-    <div class="empty-note">אין כרגע מודעות שעומדות בכל הקריטריונים.</div>
+    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
   </section>
 
-  <section class="model-section">
+  <section class="model">
     <h2>סקודה פאביה</h2>
-    <div class="empty-note">אין כרגע מודעות שעומדות בכל הקריטריונים.</div>
+    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
   </section>
 
-  <section class="expansion-section">
+  <div class="expansion-block">
     <h2>מה עוד תמצא אם תרחיב את הקריטריונים</h2>
-    <p class="subhead">לכל דגם — כמה מודעות נוספות נכנסות אם התקציב עולה ל-50,000 ₪, השנתון יורד ל-2016, או הק"מ עולה ל-200,000.</p>
 
-    <div class="expansion-model">
+    <div class="model-expansion">
       <h3>יונדאי i20</h3>
-      <div class="expansion-scenario">
-        <h4>אם התקציב יעלה ל-50,000 ₪ (3 מודעות נוספות)</h4>
+      <div class="expansion-sub">
+        <p class="sub-title">אם התקציב יעלה ל-50,000 ₪ (5 מודעות נוספות)</p>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/2z4f0sal" target="_blank">Prestige אוט׳ 1.0 (100 כ״ס)</a></td><td>2019</td><td>3</td><td>49,000 ₪</td></tr>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/ab5zkci4" target="_blank">Premium אוט׳ 1.4 (100 כ״ס)</a></td><td>2018</td><td>2</td><td>47,000 ₪</td></tr>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/b84vp4t6" target="_blank">Intense אוט׳ 1.0 (100 כ״ס)</a></td><td>2020</td><td>2</td><td>45,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/2z4f0sal" target="_blank">Prestige אוט׳ 1.0 (100 כ״ס)</a></td><td>2019</td><td>3</td><td>49,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/ab5zkci4" target="_blank">Premium אוט׳ 1.4 (100 כ״ס)</a></td><td>2018</td><td>2</td><td>47,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/b84vp4t6" target="_blank">Intense אוט׳ 1.0 (100 כ״ס)</a></td><td>2020</td><td>2</td><td>45,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/eshqn096" target="_blank">Prime Plus אוט׳ 1.0 (100 כ״ס)</a></td><td>2020</td><td>2</td><td>49,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/5t6hksr2" target="_blank">Intense אוט׳ 1.0 (100 כ״ס)</a></td><td>2020</td><td>3</td><td>49,900 ₪</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="expansion-scenario">
-        <h4>אם השנתון יהיה מ-2016 (1 מודעה נוספת)</h4>
+      <div class="expansion-sub">
+        <p class="sub-title">אם השנתון יהיה מ-2016 (1 מודעה נוספת)</p>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/m8ok0bta" target="_blank">Inspire אוט׳ 1.4 (100 כ״ס)</a></td><td>2016</td><td>2</td><td>35,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/m8ok0bta" target="_blank">Inspire אוט׳ 1.4 (100 כ״ס)</a></td><td>2016</td><td>2</td><td>35,000 ₪</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="expansion-scenario">
-        <h4>אם הק"מ יעלה ל-200,000 (3 מודעות נוספות)</h4>
+      <div class="expansion-sub">
+        <p class="sub-title">אם הק"מ יעלה ל-200,000 (3 מודעות נוספות)</p>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/psuqgf3g" target="_blank">Inspire אוט׳ 1.4 (100 כ״ס)</a></td><td>2017</td><td>3</td><td>36,900 ₪</td></tr>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/qugr7u21" target="_blank">Inspire אוט׳ 1.4 (100 כ״ס)</a></td><td>2017</td><td>4</td><td>28,000 ₪</td></tr>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/fxfk4nly" target="_blank">Intense אוט׳ 1.0 (100 כ״ס)</a></td><td>2020</td><td>2</td><td>37,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/psuqgf3g" target="_blank">Inspire אוט׳ 1.4 (100 כ״ס)</a></td><td>2017</td><td>3</td><td>36,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/qugr7u21" target="_blank">Inspire אוט׳ 1.4 (100 כ״ס)</a></td><td>2017</td><td>4</td><td>28,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/fxfk4nly" target="_blank">Intense אוט׳ 1.0 (100 כ״ס)</a></td><td>2020</td><td>2</td><td>37,000 ₪</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="expansion-model">
+    <div class="model-expansion">
       <h3>טויוטה יאריס</h3>
-      <div class="expansion-scenario">
-        <h4>אם השנתון יהיה מ-2016 (1 מודעה נוספת)</h4>
+      <div class="expansion-sub">
+        <p class="sub-title">אם השנתון יהיה מ-2016 (1 מודעה נוספת)</p>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/ygog2h8f" target="_blank">Sol אוט׳ 1.3 (99 כ״ס) [2014-2017]</a></td><td>2017</td><td>3</td><td>37,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/ygog2h8f" target="_blank">Sol אוט׳ 1.3 (99 כ״ס) [2014-2017]</a></td><td>2017</td><td>3</td><td>37,900 ₪</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="expansion-model">
+    <div class="model-expansion">
       <h3>מאזדה 2</h3>
-      <div class="expansion-scenario">
-        <h4>אם הק"מ יעלה ל-200,000 (1 מודעה נוספת)</h4>
+      <div class="expansion-sub">
+        <p class="sub-title">אם הק"מ יעלה ל-200,000 (1 מודעה נוספת)</p>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/vknxk4is" target="_blank">Comfort אוט׳ 1.5 (112 כ״ס)</a></td><td>2018</td><td>4</td><td>34,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/vknxk4is" target="_blank">Comfort אוט׳ 1.5 (112 כ״ס)</a></td><td>2018</td><td>4</td><td>34,900 ₪</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="expansion-model">
+    <div class="model-expansion">
       <h3>סוזוקי סוויפט</h3>
-      <div class="expansion-scenario">
-        <h4>אם השנתון יהיה מ-2016 (1 מודעה נוספת)</h4>
+      <div class="expansion-sub">
+        <p class="sub-title">אם השנתון יהיה מ-2016 (1 מודעה נוספת)</p>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/k1hj1s6f" target="_blank">GLS אוט׳ 1.2 (94 כ״ס) [2014-2017]</a></td><td>2016</td><td>2</td><td>28,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/k1hj1s6f" target="_blank">GLS אוט׳ 1.2 (94 כ״ס) [2014-2017]</a></td><td>2016</td><td>2</td><td>28,900 ₪</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="expansion-model">
+    <div class="model-expansion">
       <h3>סקודה פאביה</h3>
-      <div class="expansion-scenario">
-        <h4>אם התקציב יעלה ל-50,000 ₪ (5 מודעות נוספות)</h4>
+      <div class="expansion-sub">
+        <p class="sub-title">אם התקציב יעלה ל-50,000 ₪ (5 מודעות נוספות)</p>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/1pd6je0u" target="_blank">Style אוט׳ 1.0 (110 כ״ס) [2017-2019]</a></td><td>2017</td><td>1</td><td>47,900 ₪</td></tr>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/8nlyskln" target="_blank">Ambition אוט׳ 1.0 (110 כ״ס) [2018-2026]</a></td><td>2019</td><td>2</td><td>48,900 ₪</td></tr>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/lgu9pc5v" target="_blank">Style אוט׳ 1.2 (110 כ״ס)</a></td><td>2017</td><td>1</td><td>46,900 ₪</td></tr>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/p6sa7t0z" target="_blank">Ambition אוט׳ האצ'בק 1.0 (110 כ״ס) [2017-2019]</a></td><td>2018</td><td>3</td><td>44,900 ₪</td></tr>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/m5ph7edc" target="_blank">Style אוט׳ 1.2 (110 כ״ס)</a></td><td>2017</td><td>1</td><td>43,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/1pd6je0u" target="_blank">Style אוט׳ 1.0 (110 כ״ס) [2017-2019]</a></td><td>2017</td><td>1</td><td>47,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/8nlyskln" target="_blank">Ambition אוט׳ 1.0 (110 כ״ס) [2018-2026]</a></td><td>2019</td><td>2</td><td>48,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/lgu9pc5v" target="_blank">Style אוט׳ 1.2 (110 כ״ס)</a></td><td>2017</td><td>1</td><td>46,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/p6sa7t0z" target="_blank">Ambition אוט׳ האצ'בק 1.0 (110 כ״ס) [2017-2019]</a></td><td>2018</td><td>3</td><td>44,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/m5ph7edc" target="_blank">Style אוט׳ 1.2 (110 כ״ס)</a></td><td>2017</td><td>1</td><td>43,900 ₪</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="expansion-scenario">
-        <h4>אם השנתון יהיה מ-2016 (2 מודעות נוספות)</h4>
+      <div class="expansion-sub">
+        <p class="sub-title">אם השנתון יהיה מ-2016 (2 מודעות נוספות)</p>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/euqbamta" target="_blank">Ambition אוט׳ האצ'בק 1.2 (110 כ״ס)</a></td><td>2016</td><td>3</td><td>32,000 ₪</td></tr>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/mce2io6l" target="_blank">Ambition אוט׳ סטיישן / טורר 1.2 (110 כ״ס)</a></td><td>2016</td><td>3</td><td>25,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/euqbamta" target="_blank">Ambition אוט׳ האצ'בק 1.2 (110 כ״ס)</a></td><td>2016</td><td>3</td><td>32,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/mce2io6l" target="_blank">Ambition אוט׳ סטיישן / טורר 1.2 (110 כ״ס)</a></td><td>2016</td><td>3</td><td>25,900 ₪</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="expansion-scenario">
-        <h4>אם הק"מ יעלה ל-200,000 (1 מודעה נוספת)</h4>
+      <div class="expansion-sub">
+        <p class="sub-title">אם הק"מ יעלה ל-200,000 (1 מודעה נוספת)</p>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a class="item-link" href="https://www.yad2.co.il/item/tvkqsh77" target="_blank">Ambition אוט׳ האצ'בק 1.0 (110 כ״ס) [2017-2019]</a></td><td>2018</td><td>1</td><td>37,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/tvkqsh77" target="_blank">Ambition אוט׳ האצ'בק 1.0 (110 כ״ס) [2017-2019]</a></td><td>2018</td><td>1</td><td>37,900 ₪</td></tr>
           </tbody>
         </table>
       </div>
     </div>
-  </section>
+  </div>
 
   <footer>
-    <div>עדכון אחרון: 16 בספטמבר 2026, 14:00</div>
-    <div>המשימה המתוזמנת ממשיכה לרוץ ותשלח עדכון במייל על מודעות חדשות.</div>
+    <p>עדכון אחרון: 16/09/2026 16:00</p>
+    <p>המשימה המתוזמנת ממשיכה לרוץ ותשלח עדכון במייל על מודעות חדשות.</p>
   </footer>
 </div>
 </body>
