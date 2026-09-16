@@ -1,6 +1,16 @@
 {
-  "lastRun": "2026-09-16T21:00:00.000Z",
-  "listings": {},
+  "lastRun": "2026-09-17T00:00:00.000Z",
+  "listings": {
+    "rrmp6j0q": {
+      "model": "i20",
+      "version": "Inspire אוט׳ 1.4 (100 כ״ס)",
+      "year": 2017,
+      "hand": 2,
+      "price": 39000,
+      "link": "https://www.yad2.co.il/item/rrmp6j0q",
+      "search": "יונדאי i20"
+    }
+  },
   "expansions": {
     "i20": {
       "budget": [

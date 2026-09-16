@@ -8,147 +8,114 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0b0c0f;
-    --card: #16181d;
-    --card-border: #24272e;
-    --text: #eef0f3;
-    --text-dim: #9a9fa8;
-    --accent: #5b8cff;
-    --good: #34d399;
-    --radius: 14px;
-  }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    margin: 0;
     font-family: 'IBM Plex Sans Hebrew', sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    background: #f7f7f8;
+    color: #1a1a1a;
     line-height: 1.5;
-    padding: 32px 20px 80px;
+    padding: 40px 20px;
   }
-  .wrap { max-width: 980px; margin: 0 auto; }
-  header { margin-bottom: 32px; }
-  h1 { font-size: 28px; font-weight: 700; margin: 0 0 6px; }
-  .subhead { color: var(--text-dim); font-size: 15px; margin: 0; }
-
+  .container { max-width: 960px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 40px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .subhead { color: #666; font-size: 15px; }
   .summary-strip {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 12px;
-    margin: 28px 0 40px;
+    margin-bottom: 40px;
   }
   .summary-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
-    padding: 18px 14px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 12px;
     text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
-  .summary-card .num { font-size: 30px; font-weight: 700; color: var(--accent); }
-  .summary-card .label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
-
-  section.model-section { margin-bottom: 44px; }
-  h2 {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 0 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--card-border);
+  .summary-card .num { font-size: 30px; font-weight: 700; color: #1a1a1a; }
+  .summary-card .label { font-size: 13px; color: #777; margin-top: 4px; }
+  .model-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    font-size: 14px;
-  }
-  th, td { padding: 11px 14px; text-align: right; }
-  th {
-    background: #1c1f26;
-    color: var(--text-dim);
-    font-weight: 500;
-    font-size: 12px;
-  }
-  tr:not(:last-child) td { border-bottom: 1px solid var(--card-border); }
-  td a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .model-section h2 { font-size: 19px; font-weight: 600; margin-bottom: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: right; padding: 10px 8px; border-bottom: 1px solid #eee; }
+  th { color: #888; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; }
+  td a { color: #2563eb; text-decoration: none; font-weight: 500; }
   td a:hover { text-decoration: underline; }
-  .cheapest { color: var(--good); font-weight: 600; }
-  .empty-note { color: var(--text-dim); font-size: 14px; padding: 14px 0; }
-
-  .expansion-block { margin-top: 56px; }
-  .expansion-block > h2 { font-size: 22px; }
-  .expansion-model { margin-top: 30px; }
-  .expansion-model h3 { font-size: 17px; font-weight: 600; margin: 0 0 10px; }
-  .expansion-sub { margin: 14px 0 20px; }
-  .expansion-sub h4 {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-dim);
-    margin: 0 0 8px;
-  }
+  .cheapest { background: #f0fdf4; }
+  .cheapest td:first-child::after { content: " 🏆"; }
+  .empty-note { color: #999; font-size: 14px; padding: 12px 0; }
+  .expansions-section { margin-top: 48px; }
+  .expansions-section > h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+  .expansion-model { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .expansion-model h3 { font-size: 17px; font-weight: 600; margin-bottom: 14px; }
+  .expansion-sub { margin-bottom: 18px; }
+  .expansion-sub h4 { font-size: 14px; font-weight: 600; color: #444; margin-bottom: 8px; }
   .expansion-sub table { font-size: 13px; }
-  .expansion-sub th, .expansion-sub td { padding: 8px 12px; }
-  .no-expansion { color: var(--text-dim); font-size: 14px; margin: 8px 0 0; }
-
-  footer {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid var(--card-border);
-    color: var(--text-dim);
-    font-size: 13px;
-  }
+  .expansion-sub th, .expansion-sub td { padding: 7px 6px; }
+  .no-expansion { color: #999; font-size: 14px; }
+  footer { text-align: center; margin-top: 48px; color: #999; font-size: 13px; }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="container">
   <header>
     <h1>מעקב רכבים — יד2</h1>
-    <p class="subhead">חיפוש אוטומטי אחר 5 דגמי רכב במחיר עד 40,000 ₪, שנתון 2017+, עד 150,000 ק"מ — בעלות פרטית בלבד, ללא ליסינג</p>
+    <div class="subhead">חיפוש אוטומטי אחר 5 דגמי רכב מומלצים, במסגרת תקציב ותנאים שנקבעו מראש</div>
   </header>
 
   <div class="summary-strip">
-    <div class="summary-card"><div class="num">0</div><div class="label">יונדאי i20</div></div>
+    <div class="summary-card"><div class="num">1</div><div class="label">יונדאי i20</div></div>
     <div class="summary-card"><div class="num">0</div><div class="label">טויוטה יאריס</div></div>
     <div class="summary-card"><div class="num">0</div><div class="label">מאזדה 2</div></div>
     <div class="summary-card"><div class="num">0</div><div class="label">סוזוקי סוויפט</div></div>
     <div class="summary-card"><div class="num">0</div><div class="label">סקודה פאביה</div></div>
   </div>
 
-  <section class="model-section">
+  <div class="model-section">
     <h2>יונדאי i20</h2>
-    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
-  </section>
+    <table>
+      <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
+      <tbody>
+        <tr class="cheapest">
+          <td><a href="https://www.yad2.co.il/item/rrmp6j0q" target="_blank">Inspire אוט׳ 1.4 (100 כ״ס)</a></td>
+          <td>2017</td><td>2</td><td>39,000 ₪</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <section class="model-section">
+  <div class="model-section">
     <h2>טויוטה יאריס</h2>
-    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
-  </section>
+    <div class="empty-note">לא נמצאו מודעות רלוונטיות כרגע</div>
+  </div>
 
-  <section class="model-section">
+  <div class="model-section">
     <h2>מאזדה 2</h2>
-    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
-  </section>
+    <div class="empty-note">לא נמצאו מודעות רלוונטיות כרגע</div>
+  </div>
 
-  <section class="model-section">
+  <div class="model-section">
     <h2>סוזוקי סוויפט</h2>
-    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
-  </section>
+    <div class="empty-note">לא נמצאו מודעות רלוונטיות כרגע</div>
+  </div>
 
-  <section class="model-section">
+  <div class="model-section">
     <h2>סקודה פאביה</h2>
-    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
-  </section>
+    <div class="empty-note">לא נמצאו מודעות רלוונטיות כרגע</div>
+  </div>
 
-  <div class="expansion-block">
+  <div class="expansions-section">
     <h2>מה עוד תמצא אם תרחיב את הקריטריונים</h2>
 
     <div class="expansion-model">
       <h3>יונדאי i20</h3>
-
       <div class="expansion-sub">
         <h4>אם התקציב יעלה ל-50,000 ₪ (4 מודעות נוספות)</h4>
         <table>
@@ -161,7 +128,6 @@
           </tbody>
         </table>
       </div>
-
       <div class="expansion-sub">
         <h4>אם השנתון יהיה מ-2016 (1 מודעות נוספות)</h4>
         <table>
@@ -171,7 +137,6 @@
           </tbody>
         </table>
       </div>
-
       <div class="expansion-sub">
         <h4>אם הק"מ יעלה ל-200,000 (2 מודעות נוספות)</h4>
         <table>
@@ -225,7 +190,6 @@
 
     <div class="expansion-model">
       <h3>סקודה פאביה</h3>
-
       <div class="expansion-sub">
         <h4>אם התקציב יעלה ל-50,000 ₪ (5 מודעות נוספות)</h4>
         <table>
@@ -239,7 +203,6 @@
           </tbody>
         </table>
       </div>
-
       <div class="expansion-sub">
         <h4>אם השנתון יהיה מ-2016 (2 מודעות נוספות)</h4>
         <table>
@@ -250,7 +213,6 @@
           </tbody>
         </table>
       </div>
-
       <div class="expansion-sub">
         <h4>אם הק"מ יעלה ל-200,000 (1 מודעות נוספות)</h4>
         <table>
@@ -264,8 +226,8 @@
   </div>
 
   <footer>
-    <p>עודכן לאחרונה: 17.09.2026, 00:00</p>
-    <p>המשימה המתוזמנת ממשיכה לרוץ ותשלח עדכון במייל על מודעות חדשות.</p>
+    עודכן לאחרונה: 17.09.2026, 02:00<br>
+    המשימה המתוזמנת ממשיכה לרוץ ותשלח עדכון במייל על מודעות חדשות
   </footer>
 </div>
 </body>
