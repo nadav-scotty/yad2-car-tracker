@@ -1,12 +1,13 @@
 {
-  "lastRun": "2026-09-16T19:00:00.000Z",
+  "lastRun": "2026-09-16T21:00:00.000Z",
   "listings": {},
   "expansions": {
     "i20": {
       "budget": [
         { "version": "Premium אוט׳ 1.4 (100 כ״ס)", "year": 2018, "hand": 2, "price": 47000, "link": "https://www.yad2.co.il/item/ab5zkci4" },
         { "version": "Prestige אוט׳ 1.0 (100 כ״ס)", "year": 2019, "hand": 3, "price": 49000, "link": "https://www.yad2.co.il/item/2z4f0sal" },
-        { "version": "Intense אוט׳ 1.0 (100 כ״ס)", "year": 2020, "hand": 2, "price": 45000, "link": "https://www.yad2.co.il/item/b84vp4t6" }
+        { "version": "Intense אוט׳ 1.0 (100 כ״ס)", "year": 2020, "hand": 2, "price": 45000, "link": "https://www.yad2.co.il/item/b84vp4t6" },
+        { "version": "Intense אוט׳ 1.0 (100 כ״ס)", "year": 2020, "hand": 3, "price": 49900, "link": "https://www.yad2.co.il/item/5t6hksr2" }
       ],
       "year": [
         { "version": "Inspire אוט׳ 1.4 (100 כ״ס)", "year": 2016, "hand": 2, "price": 35000, "link": "https://www.yad2.co.il/item/m8ok0bta" }

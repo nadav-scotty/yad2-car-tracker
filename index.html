@@ -3,94 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>מעקב רכבים יד2</title>
+<title>מעקב רכבים — יד2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0b0c0f;
-    --card: #15171c;
-    --card-border: #23262e;
-    --text: #eceef1;
-    --text-dim: #9aa0ac;
-    --accent: #4f8cff;
+    --card: #16181d;
+    --card-border: #24272e;
+    --text: #eef0f3;
+    --text-dim: #9a9fa8;
+    --accent: #5b8cff;
     --good: #34d399;
-    --danger: #f87171;
+    --radius: 14px;
   }
   * { box-sizing: border-box; }
   body {
+    margin: 0;
     font-family: 'IBM Plex Sans Hebrew', sans-serif;
     background: var(--bg);
     color: var(--text);
-    margin: 0;
-    padding: 0 20px 60px;
     line-height: 1.5;
+    padding: 32px 20px 80px;
   }
   .wrap { max-width: 980px; margin: 0 auto; }
-  header { padding: 48px 0 24px; text-align: center; }
-  h1 { font-size: 30px; font-weight: 700; margin: 0 0 8px; }
+  header { margin-bottom: 32px; }
+  h1 { font-size: 28px; font-weight: 700; margin: 0 0 6px; }
   .subhead { color: var(--text-dim); font-size: 15px; margin: 0; }
-  .summary {
+
+  .summary-strip {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 12px;
-    margin: 32px 0;
+    margin: 28px 0 40px;
   }
-  .summary .stat {
+  .summary-card {
     background: var(--card);
     border: 1px solid var(--card-border);
-    border-radius: 14px;
-    padding: 18px 10px;
+    border-radius: var(--radius);
+    padding: 18px 14px;
     text-align: center;
   }
-  .summary .stat .num { font-size: 28px; font-weight: 700; color: var(--accent); }
-  .summary .stat .label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
-  section.model { margin: 40px 0; }
-  h2 { font-size: 20px; font-weight: 600; margin: 0 0 14px; padding-right: 10px; border-right: 3px solid var(--accent); }
+  .summary-card .num { font-size: 30px; font-weight: 700; color: var(--accent); }
+  .summary-card .label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+  section.model-section { margin-bottom: 44px; }
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
   table {
     width: 100%;
     border-collapse: collapse;
     background: var(--card);
     border: 1px solid var(--card-border);
-    border-radius: 12px;
+    border-radius: var(--radius);
     overflow: hidden;
     font-size: 14px;
   }
-  th, td {
-    padding: 10px 14px;
-    text-align: right;
-    border-bottom: 1px solid var(--card-border);
+  th, td { padding: 11px 14px; text-align: right; }
+  th {
+    background: #1c1f26;
+    color: var(--text-dim);
+    font-weight: 500;
+    font-size: 12px;
   }
-  th { color: var(--text-dim); font-weight: 500; font-size: 13px; }
-  tr:last-child td { border-bottom: none; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  tr:not(:last-child) td { border-bottom: 1px solid var(--card-border); }
+  td a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  td a:hover { text-decoration: underline; }
   .cheapest { color: var(--good); font-weight: 600; }
-  .cheapest-badge {
-    display: inline-block;
-    background: rgba(52,211,153,.15);
-    color: var(--good);
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 6px;
-    margin-right: 6px;
+  .empty-note { color: var(--text-dim); font-size: 14px; padding: 14px 0; }
+
+  .expansion-block { margin-top: 56px; }
+  .expansion-block > h2 { font-size: 22px; }
+  .expansion-model { margin-top: 30px; }
+  .expansion-model h3 { font-size: 17px; font-weight: 600; margin: 0 0 10px; }
+  .expansion-sub { margin: 14px 0 20px; }
+  .expansion-sub h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dim);
+    margin: 0 0 8px;
   }
-  .empty-note { color: var(--text-dim); font-size: 14px; padding: 12px 4px; }
-  .expansion-block { margin-top: 48px; }
-  .expansion-block > h2 { border-right-color: #6b7280; }
-  .model-expansion { margin: 24px 0 0; }
-  .model-expansion h3 { font-size: 16px; font-weight: 600; margin: 0 0 10px; color: var(--text); }
-  .expansion-sub { margin: 10px 0 18px; }
-  .expansion-sub .sub-title { font-size: 13px; color: var(--text-dim); margin: 0 0 6px; }
   .expansion-sub table { font-size: 13px; }
-  .expansion-sub th, .expansion-sub td { padding: 7px 10px; }
-  .no-expansion-note { color: var(--text-dim); font-size: 14px; padding: 6px 4px 0; }
+  .expansion-sub th, .expansion-sub td { padding: 8px 12px; }
+  .no-expansion { color: var(--text-dim); font-size: 14px; margin: 8px 0 0; }
+
   footer {
     margin-top: 60px;
-    padding-top: 24px;
+    padding-top: 20px;
     border-top: 1px solid var(--card-border);
-    text-align: center;
     color: var(--text-dim);
     font-size: 13px;
   }
@@ -99,61 +106,64 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>מעקב רכבים יד2</h1>
-    <p class="subhead">5 חיפושים פעילים · עדכון אוטומטי · יונדאי i20, טויוטה יאריס, מאזדה 2, סוזוקי סוויפט, סקודה פאביה</p>
+    <h1>מעקב רכבים — יד2</h1>
+    <p class="subhead">חיפוש אוטומטי אחר 5 דגמי רכב במחיר עד 40,000 ₪, שנתון 2017+, עד 150,000 ק"מ — בעלות פרטית בלבד, ללא ליסינג</p>
   </header>
 
-  <div class="summary">
-    <div class="stat"><div class="num">0</div><div class="label">יונדאי i20</div></div>
-    <div class="stat"><div class="num">0</div><div class="label">טויוטה יאריס</div></div>
-    <div class="stat"><div class="num">0</div><div class="label">מאזדה 2</div></div>
-    <div class="stat"><div class="num">0</div><div class="label">סוזוקי סוויפט</div></div>
-    <div class="stat"><div class="num">0</div><div class="label">סקודה פאביה</div></div>
+  <div class="summary-strip">
+    <div class="summary-card"><div class="num">0</div><div class="label">יונדאי i20</div></div>
+    <div class="summary-card"><div class="num">0</div><div class="label">טויוטה יאריס</div></div>
+    <div class="summary-card"><div class="num">0</div><div class="label">מאזדה 2</div></div>
+    <div class="summary-card"><div class="num">0</div><div class="label">סוזוקי סוויפט</div></div>
+    <div class="summary-card"><div class="num">0</div><div class="label">סקודה פאביה</div></div>
   </div>
 
-  <section class="model">
+  <section class="model-section">
     <h2>יונדאי i20</h2>
-    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
+    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
   </section>
 
-  <section class="model">
+  <section class="model-section">
     <h2>טויוטה יאריס</h2>
-    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
+    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
   </section>
 
-  <section class="model">
+  <section class="model-section">
     <h2>מאזדה 2</h2>
-    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
+    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
   </section>
 
-  <section class="model">
+  <section class="model-section">
     <h2>סוזוקי סוויפט</h2>
-    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
+    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
   </section>
 
-  <section class="model">
+  <section class="model-section">
     <h2>סקודה פאביה</h2>
-    <p class="empty-note">אין כרגע מודעות רלוונטיות בקריטריונים הנוכחיים (שנתון 2017+, עד 150,000 ק"מ, עד 40,000 ₪).</p>
+    <p class="empty-note">לא נמצאו מודעות רלוונטיות בקריטריונים הנוכחיים.</p>
   </section>
 
   <div class="expansion-block">
     <h2>מה עוד תמצא אם תרחיב את הקריטריונים</h2>
 
-    <div class="model-expansion">
+    <div class="expansion-model">
       <h3>יונדאי i20</h3>
+
       <div class="expansion-sub">
-        <p class="sub-title">אם התקציב יעלה ל-50,000 ₪ (3 מודעות נוספות)</p>
+        <h4>אם התקציב יעלה ל-50,000 ₪ (4 מודעות נוספות)</h4>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a href="https://www.yad2.co.il/item/2z4f0sal" target="_blank">Prestige אוט׳ 1.0 (100 כ״ס)</a></td><td>2019</td><td>3</td><td>49,000 ₪</td></tr>
             <tr><td><a href="https://www.yad2.co.il/item/ab5zkci4" target="_blank">Premium אוט׳ 1.4 (100 כ״ס)</a></td><td>2018</td><td>2</td><td>47,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/2z4f0sal" target="_blank">Prestige אוט׳ 1.0 (100 כ״ס)</a></td><td>2019</td><td>3</td><td>49,000 ₪</td></tr>
             <tr><td><a href="https://www.yad2.co.il/item/b84vp4t6" target="_blank">Intense אוט׳ 1.0 (100 כ״ס)</a></td><td>2020</td><td>2</td><td>45,000 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/5t6hksr2" target="_blank">Intense אוט׳ 1.0 (100 כ״ס)</a></td><td>2020</td><td>3</td><td>49,900 ₪</td></tr>
           </tbody>
         </table>
       </div>
+
       <div class="expansion-sub">
-        <p class="sub-title">אם השנתון יהיה מ-2016 (1 מודעה נוספת)</p>
+        <h4>אם השנתון יהיה מ-2016 (1 מודעות נוספות)</h4>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
@@ -161,8 +171,9 @@
           </tbody>
         </table>
       </div>
+
       <div class="expansion-sub">
-        <p class="sub-title">אם הק"מ יעלה ל-200,000 (2 מודעות נוספות)</p>
+        <h4>אם הק"מ יעלה ל-200,000 (2 מודעות נוספות)</h4>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
@@ -173,10 +184,10 @@
       </div>
     </div>
 
-    <div class="model-expansion">
+    <div class="expansion-model">
       <h3>טויוטה יאריס</h3>
       <div class="expansion-sub">
-        <p class="sub-title">אם השנתון יהיה מ-2016 (1 מודעה נוספת)</p>
+        <h4>אם הק"מ יעלה ל-200,000 (1 מודעות נוספות)</h4>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
@@ -186,10 +197,10 @@
       </div>
     </div>
 
-    <div class="model-expansion">
+    <div class="expansion-model">
       <h3>מאזדה 2</h3>
       <div class="expansion-sub">
-        <p class="sub-title">אם הק"מ יעלה ל-200,000 (1 מודעה נוספת)</p>
+        <h4>אם הק"מ יעלה ל-200,000 (1 מודעות נוספות)</h4>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
@@ -199,10 +210,10 @@
       </div>
     </div>
 
-    <div class="model-expansion">
+    <div class="expansion-model">
       <h3>סוזוקי סוויפט</h3>
       <div class="expansion-sub">
-        <p class="sub-title">אם השנתון יהיה מ-2016 (1 מודעה נוספת)</p>
+        <h4>אם השנתון יהיה מ-2016 (1 מודעות נוספות)</h4>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
@@ -212,23 +223,25 @@
       </div>
     </div>
 
-    <div class="model-expansion">
+    <div class="expansion-model">
       <h3>סקודה פאביה</h3>
+
       <div class="expansion-sub">
-        <p class="sub-title">אם התקציב יעלה ל-50,000 ₪ (5 מודעות נוספות)</p>
+        <h4>אם התקציב יעלה ל-50,000 ₪ (5 מודעות נוספות)</h4>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
-            <tr><td><a href="https://www.yad2.co.il/item/1pd6je0u" target="_blank">Style אוט׳ 1.0 (110 כ״ס) [2017-2019]</a></td><td>2017</td><td>1</td><td>47,900 ₪</td></tr>
-            <tr><td><a href="https://www.yad2.co.il/item/8nlyskln" target="_blank">Ambition אוט׳ 1.0 (110 כ״ס) [2018-2026]</a></td><td>2019</td><td>2</td><td>48,900 ₪</td></tr>
-            <tr><td><a href="https://www.yad2.co.il/item/lgu9pc5v" target="_blank">Style אוט׳ 1.2 (110 כ״ס)</a></td><td>2017</td><td>1</td><td>46,900 ₪</td></tr>
-            <tr><td><a href="https://www.yad2.co.il/item/p6sa7t0z" target="_blank">Ambition אוט׳ האצ'בק 1.0 (110 כ״ס) [2017-2019]</a></td><td>2018</td><td>3</td><td>44,900 ₪</td></tr>
             <tr><td><a href="https://www.yad2.co.il/item/m5ph7edc" target="_blank">Style אוט׳ 1.2 (110 כ״ס)</a></td><td>2017</td><td>1</td><td>43,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/8nlyskln" target="_blank">Ambition אוט׳ 1.0 (110 כ״ס) [2018-2026]</a></td><td>2019</td><td>2</td><td>48,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/p6sa7t0z" target="_blank">Ambition אוט׳ האצ'בק 1.0 (110 כ״ס) [2017-2019]</a></td><td>2018</td><td>3</td><td>44,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/1pd6je0u" target="_blank">Style אוט׳ 1.0 (110 כ״ס) [2017-2019]</a></td><td>2017</td><td>1</td><td>47,900 ₪</td></tr>
+            <tr><td><a href="https://www.yad2.co.il/item/lgu9pc5v" target="_blank">Style אוט׳ 1.2 (110 כ״ס)</a></td><td>2017</td><td>1</td><td>46,900 ₪</td></tr>
           </tbody>
         </table>
       </div>
+
       <div class="expansion-sub">
-        <p class="sub-title">אם השנתון יהיה מ-2016 (2 מודעות נוספות)</p>
+        <h4>אם השנתון יהיה מ-2016 (2 מודעות נוספות)</h4>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
@@ -237,8 +250,9 @@
           </tbody>
         </table>
       </div>
+
       <div class="expansion-sub">
-        <p class="sub-title">אם הק"מ יעלה ל-200,000 (1 מודעה נוספת)</p>
+        <h4>אם הק"מ יעלה ל-200,000 (1 מודעות נוספות)</h4>
         <table>
           <thead><tr><th>גרסה</th><th>שנה</th><th>יד</th><th>מחיר</th></tr></thead>
           <tbody>
@@ -250,7 +264,7 @@
   </div>
 
   <footer>
-    <p>עדכון אחרון: 16/09/2026 22:00</p>
+    <p>עודכן לאחרונה: 17.09.2026, 00:00</p>
     <p>המשימה המתוזמנת ממשיכה לרוץ ותשלח עדכון במייל על מודעות חדשות.</p>
   </footer>
 </div>
