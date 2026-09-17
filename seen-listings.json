@@ -1,5 +1,5 @@
 {
-  "lastRun": "2026-09-17T07:04:10.764755Z",
+  "lastRun": "2026-09-17T09:00:00.101Z",
   "listings": {},
   "expansions": {
     "i20": {
@@ -65,7 +65,9 @@
       ]
     },
     "mazda2": {
-      "budget": [
+      "budget": [],
+      "year": [],
+      "km": [
         {
           "version": "Comfort אוט׳ 1.5 (112 כ״ס)",
           "year": 2018,
@@ -73,9 +75,7 @@
           "price": 34900,
           "link": "https://www.yad2.co.il/item/vknxk4is"
         }
-      ],
-      "year": [],
-      "km": []
+      ]
     },
     "swift": {
       "budget": [],
@@ -96,8 +96,8 @@
           "version": "Style אוט׳ 1.2 (110 כ״ס)",
           "year": 2017,
           "hand": 1,
-          "price": 43900,
-          "link": "https://www.yad2.co.il/item/m5ph7edc"
+          "price": 46900,
+          "link": "https://www.yad2.co.il/item/lgu9pc5v"
         },
         {
           "version": "Style אוט׳ 1.0 (110 כ״ס) [2017-2019]",
@@ -107,18 +107,11 @@
           "link": "https://www.yad2.co.il/item/1pd6je0u"
         },
         {
-          "version": "Ambition אוט׳ 1.0 (110 כ״ס) [2018-2026]",
-          "year": 2019,
-          "hand": 2,
-          "price": 48900,
-          "link": "https://www.yad2.co.il/item/8nlyskln"
-        },
-        {
           "version": "Style אוט׳ 1.2 (110 כ״ס)",
           "year": 2017,
           "hand": 1,
-          "price": 46900,
-          "link": "https://www.yad2.co.il/item/lgu9pc5v"
+          "price": 43900,
+          "link": "https://www.yad2.co.il/item/m5ph7edc"
         },
         {
           "version": "Ambition אוט׳ האצ'בק 1.0 (110 כ״ס) [2017-2019]",
@@ -129,13 +122,6 @@
         }
       ],
       "year": [
-        {
-          "version": "Ambition אוט׳ האצ'בק 1.2 (110 כ״ס)",
-          "year": 2016,
-          "hand": 3,
-          "price": 32000,
-          "link": "https://www.yad2.co.il/item/euqbamta"
-        },
         {
           "version": "Ambition אוט׳ סטיישן / טורר 1.2 (110 כ״ס)",
           "year": 2016,
