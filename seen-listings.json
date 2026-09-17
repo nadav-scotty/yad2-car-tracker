@@ -1,5 +1,5 @@
 {
-  "lastRun": "2026-09-17T00:00:00.000Z",
+  "lastRun": "2026-09-17T01:00:00.042Z",
   "listings": {
     "rrmp6j0q": {
       "model": "i20",
@@ -24,7 +24,8 @@
       ],
       "km": [
         { "version": "Inspire אוט׳ 1.4 (100 כ״ס)", "year": 2017, "hand": 4, "price": 28000, "link": "https://www.yad2.co.il/item/qugr7u21" },
-        { "version": "Intense אוט׳ 1.0 (100 כ״ס)", "year": 2020, "hand": 2, "price": 37000, "link": "https://www.yad2.co.il/item/fxfk4nly" }
+        { "version": "Intense אוט׳ 1.0 (100 כ״ס)", "year": 2020, "hand": 2, "price": 37000, "link": "https://www.yad2.co.il/item/fxfk4nly" },
+        { "version": "Inspire אוט׳ 1.4 (100 כ״ס)", "year": 2017, "hand": 3, "price": 36900, "link": "https://www.yad2.co.il/item/psuqgf3g" }
       ]
     },
     "yaris": {
